@@ -1,1 +1,7 @@
-docker exec -it gitlab-cicd_runner_1 gitlab-runner register -n -r $REGISTRATION_TOKEN -u http://gitlab --executor docker --docker-image docker:latest --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
+docker exec -it gitlab-cicd_runner_1 \
+    gitlab-runner register -n -r $REGISTRATION_TOKEN \
+    -u http://gitlab.localhost.com \
+    --executor docker \
+    --docker-image docker:latest \
+    --docker-network-mode gitlab-cicd_default \
+    --docker-volumes "/var/run/docker.sock:/var/run/docker.sock"
